@@ -110,6 +110,13 @@ Swagger is used for documentation of API-endpoints
 - http://localhost:<PORT>/api-docs/
 - example: http://localhost:3000/api-docs
 
+## Test Credentials (local development only)
+
+Use these for manual testing in Postman:
+
+- Email: `ken@barbiegirl.com`
+- Password: `ImjustKen`
+
 # motivation
 
 I chose to build

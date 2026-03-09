@@ -49,7 +49,7 @@ export const validateRegistration = (
       error: result.error.issues[0].message,
     });
   }
-
+  req.body = result.data;
   next();
 };
 
@@ -63,10 +63,10 @@ export const validateLogin = (
 
   if (!result.success) {
     return res.status(400).json({
-      error: "Validation failed",
-      details: result.error.issues.map((issue) => issue.message),
+      error: result.error.issues[0].message,
     });
   }
+  req.body = result.data;
 
   next();
 };

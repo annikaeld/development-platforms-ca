@@ -1,14 +1,13 @@
-import { Request, Response, NextFunction, Router } from "express";
+import { Router } from "express";
 import { pool } from "../database.js";
 import { ResultSetHeader } from "mysql2";
 import { User, UserResponse } from "../types/index.js";
 import bcrypt from "bcrypt";
 import {
   validateRegistration,
-  loginSchema,
   validateLogin,
 } from "../middleware/authMiddleware.js";
-import { generateToken } from "../utils/jwt";
+import { generateToken } from "../utils/jwt.js";
 
 const router = Router();
 
@@ -232,7 +231,6 @@ router.post("/login", validateLogin, async (req, res) => {
 
     const user = users[0];
 
-    // Verify password using bcrypt
     const validPassword = await bcrypt.compare(password, user.password_hash);
 
     if (!validPassword) {
