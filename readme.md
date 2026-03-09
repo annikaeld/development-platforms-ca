@@ -1,6 +1,6 @@
 # Description
 
-Build a news platform where users can browse and submit news articles. Build a REST API with Express with no frontend required.
+Build a news platform where users can browse and submit news articles. Built as a REST API with Express with no frontend required.
 
 ## Public Access:
 
@@ -81,10 +81,10 @@ CREATE TABLE articles (
 1. Copy `.env.example` to `.env` and fill in your values:
 
 ```bash
-cp .env.example .env
+Copy-Item .env.example .env
 ```
 
-2. Install depenencies:
+2. Install dependencies:
 
 ```bash
 npm install
@@ -95,6 +95,12 @@ npm install
 ```bash
 npm run dev
 ```
+
+## Scripts
+
+- **`npm run dev`**: Starts the server in development mode with auto-reloading
+- **`npm run build`**: Compiles TypeScript code to JavaScript
+- **`npm start`**: Runs the compiled JavaScript code (for production)
 
 # motivation
 
