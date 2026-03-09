@@ -7,14 +7,13 @@ import { validateRegistration } from "../middleware/authMiddleware.js";
 
 const router = Router();
 
-// ...existing code...
 /**
  * @swagger
  * /auth/register:
  *   post:
  *     summary: Register a new user
  *     tags:
- *       - Auth
+ *       - Authentication
  *     requestBody:
  *       required: true
  *       content:
