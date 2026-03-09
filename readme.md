@@ -40,23 +40,61 @@ Build a news platform where users can browse and submit news articles. Build a R
 # Required Endpoints:
 
 - POST /auth/register - User registration
+
+```JSON
+// POST /auth/register
+{
+  "email": "user@example.com",
+  "password": "securepassword"
+}
+```
+
 - POST /auth/login - User login (returns JWT)
 - GET /articles - View all articles (public access)
 - POST /articles - Submit new article (protected, requires JWT)
 
 # Database Tables:
 
-- users (id, email, password_hash, created_at)
-- articles (id, title, body, category, submitted_by, created_at)
+```SQL
+CREATE TABLE users (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  email VARCHAR(255) NOT NULL UNIQUE,
+  password_hash VARCHAR(255) NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+```
+
+```SQL
+CREATE TABLE articles (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  title VARCHAR(255) NOT NULL,
+  body TEXT NOT NULL,
+  category VARCHAR(100),
+  submitted_by INT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (submitted_by) REFERENCES users(id)
+);
+```
 
 # Setup
 
-Run these commands to get started:
+1. Copy `.env.example` to `.env` and fill in your values:
 
-# Environment variables
+```bash
+cp .env.example .env
+```
 
-- Copy .env.example to .env and fill in any required values for local development.
-- Do NOT commit your .env file. .env is included in .gitignore by default.
+2. Install depenencies:
+
+```bash
+npm install
+```
+
+3. Run the application:
+
+```bash
+npm run dev
+```
 
 # motivation
 
@@ -72,7 +110,7 @@ what you think the benefits of developing a custom API are versus using a SaaS o
 
 - the GET /articles endpoint returns a list of articles
 - the POST /articles endpoint is protected by auth and creates an article
-- the POST/ user/register endpoint registers a new user
+- the POST /user/register endpoint registers a new user
 - the POST /user/login endpoint logs a user in and returns a token
 - the exported database SQL file contains the correct, working schema for the application
 - the API code is sensibly arranged with ES modules and Express Router
