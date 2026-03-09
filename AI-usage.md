@@ -67,4 +67,20 @@ As the learner, I am responsible for:
 - Taking time to think through problems before asking for help
 - Using AI as a tutor, not as a substitute for learning
 
----
+## Code Citations
+
+### Zod Email Transform Pattern
+
+**License:** MIT  
+**Source Reference:** https://github.com/geekclick/Mealway/blob/3af0e0ea2b7799b3c1666ca2faf7ce035f11e6a4/client/src/schemas/authSchema.js  
+**Context:** Pattern provided by course instructor. GitHub Copilot flagged similarity to MIT-licensed code.
+
+**Code Pattern:**
+
+```typescript
+email: z.string()
+  .email({ message: "Email must be a valid email" })
+  .transform((val) => val.trim().toLowerCase());
+```
+
+**Usage:** Applied in `src/middleware/authMiddleware.ts` for email normalization.
