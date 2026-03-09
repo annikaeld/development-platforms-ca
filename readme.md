@@ -27,6 +27,7 @@ Build a news platform where users can browse and submit news articles. Built as 
 - JWT authentication with bcrypt password hashing
 
 - Basic validation
+
 - Simple error handling
 
 # Key Implementation Requirements:
@@ -102,6 +103,13 @@ npm run dev
 - **`npm run build`**: Compiles TypeScript code to JavaScript
 - **`npm start`**: Runs the compiled JavaScript code (for production)
 
+## Swagger
+
+Swagger is used for documentation of API-endpoints
+
+- http://localhost:<PORT>/api-docs/
+- example: http://localhost:3000/api-docs
+
 # motivation
 
 I chose to build
@@ -112,6 +120,7 @@ what you found difficult.
 
 what you think the benefits of developing a custom API are versus using a SaaS option like Supabase, or vice versa.
 
+<!--
 # Grading Criteria
 
 - the GET /articles endpoint returns a list of articles
@@ -121,3 +130,4 @@ what you think the benefits of developing a custom API are versus using a SaaS o
 - the exported database SQL file contains the correct, working schema for the application
 - the API code is sensibly arranged with ES modules and Express Router
 - the endpoints contain validation and basic error handling
+-->
