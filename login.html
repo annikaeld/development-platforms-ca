@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Log In – The Pink Press</title>
+    <style>
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+      body {
+        font-family: Georgia, 'Times New Roman', serif;
+        background: #fff0f5;
+        color: #3a003a;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      header {
+        background: #fff;
+        border-bottom: 3px solid #e8006b;
+        padding: 12px 24px;
+        display: flex;
+        align-items: center;
+        box-shadow: 0 2px 8px rgba(232, 0, 107, 0.12);
+      }
+
+      .logo-link { display: flex; align-items: center; text-decoration: none; }
+      .logo-img { height: 64px; object-fit: contain; }
+
+      main {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 40px 16px;
+      }
+
+      .auth-card {
+        background: #fff;
+        border: 1px solid #f9b8d4;
+        border-top: 4px solid #e8006b;
+        border-radius: 10px;
+        padding: 36px 36px 30px;
+        width: 100%;
+        max-width: 420px;
+        box-shadow: 0 4px 16px rgba(232, 0, 107, 0.1);
+      }
+
+      .auth-card h1 {
+        font-size: 1.6rem;
+        color: #e8006b;
+        margin-bottom: 6px;
+      }
+
+      .auth-card .subtitle {
+        font-size: 0.88rem;
+        color: #c084a0;
+        margin-bottom: 24px;
+      }
+
+      .auth-card form {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .auth-card label {
+        display: block;
+        font-size: 0.85rem;
+        font-weight: bold;
+        color: #b8004f;
+        margin-bottom: 4px;
+      }
+
+      .auth-card input {
+        width: 100%;
+        padding: 10px 14px;
+        border: 1px solid #f9b8d4;
+        border-radius: 6px;
+        font-family: inherit;
+        font-size: 0.95rem;
+        color: #3a003a;
+        background: #fff8fb;
+        outline: none;
+        transition: border-color 0.2s;
+      }
+      .auth-card input:focus { border-color: #e8006b; }
+
+      .auth-card button[type="submit"] {
+        background: #e8006b;
+        color: #fff;
+        border: none;
+        border-radius: 24px;
+        padding: 11px 0;
+        font-size: 1rem;
+        font-family: inherit;
+        cursor: pointer;
+        transition: background 0.2s;
+        width: 100%;
+        margin-top: 4px;
+      }
+      .auth-card button[type="submit"]:hover { background: #b8004f; }
+
+      #error-msg {
+        color: #e8006b;
+        font-size: 0.88rem;
+        min-height: 1.2em;
+        text-align: center;
+      }
+
+      .alt-action {
+        text-align: center;
+        margin-top: 18px;
+        font-size: 0.88rem;
+        color: #5a3a5a;
+      }
+
+      .alt-action a {
+        color: #e8006b;
+        text-decoration: none;
+        font-weight: bold;
+      }
+      .alt-action a:hover { text-decoration: underline; }
+
+      .divider {
+        border: none;
+        border-top: 1px solid #f9b8d4;
+        margin: 20px 0;
+      }
+
+      footer {
+        text-align: center;
+        padding: 14px;
+        font-size: 0.8rem;
+        color: #c084a0;
+        border-top: 1px solid #f9b8d4;
+        background: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <a class="logo-link" href="index.html">
+        <img
+          class="logo-img"
+          src="https://github.com/user-attachments/assets/60a0b011-76ce-4116-ba80-51a3637c262a"
+          alt="The Pink Press"
+        />
+      </a>
+    </header>
+
+    <main>
+      <div class="auth-card">
+        <h1>Welcome back ✦</h1>
+        <p class="subtitle">Log in to publish articles on The Pink Press</p>
+
+        <form id="login-form" novalidate>
+          <div>
+            <label for="email">Email</label>
+            <input id="email" type="email" placeholder="you@example.com" required autocomplete="email" />
+          </div>
+          <div>
+            <label for="password">Password</label>
+            <input id="password" type="password" placeholder="Your password" required autocomplete="current-password" />
+          </div>
+          <p id="error-msg" aria-live="polite"></p>
+          <button type="submit">Log In</button>
+        </form>
+
+        <hr class="divider" />
+
+        <div class="alt-action">
+          Don't have an account?
+          <a href="register.html">Register here</a>
+        </div>
+      </div>
+    </main>
+
+    <footer>&copy; The Pink Press &mdash; Barbieland's Daily News</footer>
+
+    <script src="js/auth.js"></script>
+    <script src="js/login.js"></script>
+  </body>
+</html>
