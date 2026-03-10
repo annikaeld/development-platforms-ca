@@ -1,3 +1,55 @@
+// ...existing code...
+
+const API_BASE = window.API_BASE_URL || "http://localhost:3000";
+const articlesContainer = document.getElementById("articles-container");
+
+function safeDate(value) {
+  const d = new Date(value);
+  return Number.isNaN(d.getTime()) ? "" : d.toLocaleString();
+}
+
+function renderArticles(items) {
+  if (!articlesContainer) return;
+
+  if (!Array.isArray(items) || items.length === 0) {
+    articlesContainer.innerHTML = `<p class="no-articles">No articles yet.</p>`;
+    return;
+  }
+
+  articlesContainer.innerHTML = items
+    .map(
+      (a) => `
+      <article class="article-card">
+        <span class="article-category">${a.category ?? "General"}</span>
+        <h3 class="article-title">${a.title ?? ""}</h3>
+        <p class="article-body">${a.body ?? ""}</p>
+        <p class="article-meta">Published ${safeDate(a.created_at)}</p>
+      </article>
+    `,
+    )
+    .join("");
+}
+
+async function loadArticles() {
+  if (!articlesContainer) return;
+  articlesContainer.innerHTML = `<p class="loading">Loading articles…</p>`;
+
+  try {
+    const res = await fetch(`${API_BASE}/articles`);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+
+    // supports either [] or { articles: [] }
+    const items = Array.isArray(data) ? data : data.articles;
+    renderArticles(items);
+  } catch (error) {
+    console.error(error);
+    articlesContainer.innerHTML = `<p class="error-text">Could not load articles.</p>`;
+  }
+}
+
+document.addEventListener("DOMContentLoaded", loadArticles);
+
 document.addEventListener("DOMContentLoaded", () => {
   loadArticles();
   setupAuthUI();
@@ -33,23 +85,24 @@ async function loadArticles() {
     const articles = await res.json();
 
     if (!res.ok) {
-      container.innerHTML = '<p class="error-text">Failed to load articles.</p>';
+      container.innerHTML =
+        '<p class="error-text">Failed to load articles.</p>';
       return;
     }
 
     if (!articles.length) {
-      container.innerHTML = '<p class="no-articles">No articles yet. Be the first to write one!</p>';
+      container.innerHTML =
+        '<p class="no-articles">No articles yet. Be the first to write one!</p>';
       return;
     }
 
     container.innerHTML = "";
-    articles
-      .reverse()
-      .forEach((article) => {
-        container.appendChild(buildArticleCard(article));
-      });
+    articles.reverse().forEach((article) => {
+      container.appendChild(buildArticleCard(article));
+    });
   } catch {
-    container.innerHTML = '<p class="error-text">Could not connect to the server.</p>';
+    container.innerHTML =
+      '<p class="error-text">Could not connect to the server.</p>';
   }
 }
 
@@ -119,7 +172,8 @@ function setupCreateForm() {
       }, 3000);
       loadArticles();
     } catch {
-      errorMsg.textContent = "Could not connect to the server. Please try again later.";
+      errorMsg.textContent =
+        "Could not connect to the server. Please try again later.";
     }
   });
 }
