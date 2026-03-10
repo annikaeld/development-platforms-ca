@@ -1,3 +1,6 @@
+<img width="898" height="591" alt="image" src="https://github.com/user-attachments/assets/3e93be87-92d7-4f51-a6fb-cd030f6d1d84" />
+
+
 # Description
 
 Build a news platform where users can browse and submit news articles. Built as a REST API with Express with no frontend required.
