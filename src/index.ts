@@ -1,6 +1,6 @@
 import express from "express";
-import authRoutes from "./routes/authRoutes";
-import articleRoutes from "./routes/articleRoutes";
+import authRoutes from "./routes/authRoutes.js";
+import articleRoutes from "./routes/articleRoutes.js";
 import swaggerUi from "swagger-ui-express";
 import swaggerJsdoc from "swagger-jsdoc";
 
@@ -17,6 +17,15 @@ const swaggerOptions = {
       description: "A simple API for managing users and posts",
     },
     servers: [{ url: `http://localhost:${PORT}` }],
+    components: {
+      securitySchemes: {
+        bearerAuth: {
+          type: "http",
+          scheme: "bearer",
+          bearerFormat: "JWT",
+        },
+      },
+    },
   },
   apis: ["./src/routes/*.ts"],
 };
@@ -30,7 +39,6 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 app.use("/auth", authRoutes);
 app.use("/articles", articleRoutes);
-app.use("/auth", authRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);

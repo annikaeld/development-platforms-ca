@@ -1,6 +1,11 @@
 import { Router } from "express";
-import { pool } from "../database";
+import { pool } from "../database.js";
 import { Article } from "../types/index.js";
+import {
+  authenticateToken,
+  validateArticle,
+} from "../middleware/authMiddleware.js";
+import { ResultSetHeader } from "mysql2";
 
 const router = Router();
 
@@ -52,6 +57,7 @@ const router = Router();
  *                   example: Failed to fetch articles
  */
 
+// GET /articles (public)
 router.get("/", async (req, res) => {
   try {
     const [rows] = await pool.execute("SELECT * FROM articles");
@@ -64,6 +70,140 @@ router.get("/", async (req, res) => {
     res.status(500).json({
       error: "Failed to fetch articles",
     });
+  }
+});
+
+/**
+ * @swagger
+ * /articles:
+ *   post:
+ *     summary: Create a new article (requires authentication)
+ *     tags:
+ *       - Articles
+ *     security:
+ *       - bearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - title
+ *               - body
+ *               - category
+ *             properties:
+ *               title:
+ *                 type: string
+ *                 example: Ken's First Article
+ *               body:
+ *                 type: string
+ *                 example: This is a great article about fashion
+ *               category:
+ *                 type: string
+ *                 example: Fashion
+ *     responses:
+ *       201:
+ *         description: Article created successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: Article created successfully
+ *                 article:
+ *                   type: object
+ *                   properties:
+ *                     id:
+ *                       type: integer
+ *                       example: 3
+ *                     title:
+ *                       type: string
+ *                       example: Ken's First Article
+ *                     body:
+ *                       type: string
+ *                       example: This is a great article about fashion
+ *                     category:
+ *                       type: string
+ *                       example: Fashion
+ *                     submitted_by:
+ *                       type: integer
+ *                       example: 7
+ *                     created_at:
+ *                       type: string
+ *                       format: date-time
+ *                       example: 2026-03-10T14:06:48.000Z
+ *       400:
+ *         description: Invalid request body
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ *                   example: Title is required
+ *       401:
+ *         description: Access token required
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ *                   example: Access token required
+ *       403:
+ *         description: Invalid or expired token
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ *                   example: Invalid or expired token
+ *       500:
+ *         description: Failed to create article
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ *                   example: Failed to create article
+ */
+
+// POST /articles (protected)
+router.post("/", authenticateToken, validateArticle, async (req, res) => {
+  try {
+    const { title, body, category } = req.body;
+    const userId = (req as any).user.userId;
+
+    const [result] = await pool.execute<ResultSetHeader>(
+      "INSERT INTO articles (title, body, category, submitted_by) VALUES (?, ?, ?, ?)",
+      [title, body, category, userId],
+    );
+
+    const newArticle: Article = {
+      id: result.insertId,
+      title,
+      body,
+      category,
+      submitted_by: userId,
+      created_at: new Date(),
+    };
+
+    res.status(201).json({
+      message: "Article created successfully",
+      article: newArticle,
+    });
+  } catch (error) {
+    console.error("Database error:", error);
+    res.status(500).json({ error: "Failed to create article" });
   }
 });
 

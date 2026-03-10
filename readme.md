@@ -131,13 +131,15 @@ Use these for manual testing in Postman:
 
 I chose to build API endpoints using SQL because I previously completed a course on SQL queries, and this project allows me to build on that knowledge. This gives me a better understanding of the infrastructure behind a web application and how the backend and frontend interact. In this way I can learn how a back-end system actually works.
 
-What I like about the process is that it is like a neat little puzzle where every piece has its place, and it is extremely satisfying to fit the pieces together.
+What I liked about the development process is that it feels like solving a puzzle where every piece has its place. It is very satisfying when the different parts of the system finally work together.
 
-The difficult part is that sometimes the puzzle breaks, and you have to hunt down the mistake that caused it. For this part I am very grateful for the AI tools that can find my typos when my tired eyes think everything looks the same.
+What I found most difficult was when something broke and I had to track down the exact mistake that caused the problem. Debugging can take time, especially when the issue is caused by a small typo or configuration error.
+
+The part I enjoyed the least was spending long periods searching for small mistakes. However, tools such as AI assistants and error messages helped identify these issues more quickly.
 
 Supabase would be ready to use instantly and would not require as much coding to set up. It is also cloud-based and accessible to everyone, meaning the infrastructure is managed by the platform. However, this would also mean being limited to the features provided by Supabase, whereas with Express I have full control and can implement any logic required.
 
-What I think is the main benefit of a custom API is that you are in total control of what is there, and I find it fun to manage a database. However, if this were my job, my main concern would probably be security and the risk of putting everything on one server. In terms of maintenance, Supabase would require very little maintenance, while an Express server requires you to update and manage security yourself.
+What I think is the main benefit of a custom API is that you are in total control of what is implemented, and I find it fun to manage a database. However, if this were my job, my main concern would probably be security and the risk of putting everything on one server. In terms of maintenance, Supabase would require very little maintenance, while an Express server requires you to update and manage security yourself. Developing a custom API also provides a deeper understanding of how backend systems work, including authentication, database queries, and server logic.
 
 <!--
 # Grading Criteria
