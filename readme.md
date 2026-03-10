@@ -64,6 +64,16 @@ Example request: `GET /articles`
 
 - POST /articles - Submit new article (protected, requires JWT)
 
+```json
+{
+  "title": "Ken strikes again",
+  "body": "Barbieland is buzzing after Ken organized the first-ever Beach Leadership Summit.",
+  "category": "Entertainment"
+}
+```
+
+Note: Add `Authorization: Bearer <token>` to the request header.
+
 # Database Tables:
 
 ```SQL
@@ -141,14 +151,14 @@ Supabase would be ready to use instantly and would not require as much coding to
 
 What I think is the main benefit of a custom API is that you are in total control of what is implemented, and I find it fun to manage a database. However, if this were my job, my main concern would probably be security and the risk of putting everything on one server. In terms of maintenance, Supabase would require very little maintenance, while an Express server requires you to update and manage security yourself. Developing a custom API also provides a deeper understanding of how backend systems work, including authentication, database queries, and server logic.
 
-<!--
-# Grading Criteria
+## AI Assistance Disclosure
 
-- the GET /articles endpoint returns a list of articles
-- the POST /articles endpoint is protected by auth and creates an article
-- the POST /user/register endpoint registers a new user
-- the POST /user/login endpoint logs a user in and returns a token
-- the exported database SQL file contains the correct, working schema for the application
-- the API code is sensibly arranged with ES modules and Express Router
-- the endpoints contain validation and basic error handling
--->
+This project used **GitHub Copilot (GPT-5.3-Codex)** as a tutoring assistant for:
+
+- concept explanations (Express middleware, JWT, validation),
+- debugging guidance,
+- documentation support.
+
+All implementation decisions and final code were reviewed, understood, and edited by the student.
+
+Detailed AI usage and citation log: **`AI-usage.md`**.
