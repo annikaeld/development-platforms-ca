@@ -159,6 +159,6 @@ This project used **GitHub Copilot (GPT-5.3-Codex)** as a tutoring assistant for
 - debugging guidance,
 - documentation support.
 
-All implementation decisions and final code were reviewed, understood, and edited by the student.
+I reviewed, understood, and edited all implementation decisions and final code.
 
 Detailed AI usage and citation log: **`AI-usage.md`**.
