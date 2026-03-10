@@ -1,0 +1,149 @@
+/* ══════════════════════════════════════════
+   The Pink Press – Auth Pages (Login/Register)
+   ══════════════════════════════════════════ */
+
+/* ── Override body for centered layout ── */
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+/* ── Override header for auth pages ── */
+header {
+    justify-content: flex-start;
+}
+
+.logo-img {
+    height: 90px;
+}
+
+/* ── Override main for centered card ── */
+main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 16px;
+    max-width: none;
+}
+
+/* ── Auth card ── */
+.auth-card {
+    background: #fff;
+    border: 1px solid #f9b8d4;
+    border-top: 4px solid #e8006b;
+    border-radius: 10px;
+    padding: 36px 36px 30px;
+    width: 100%;
+    max-width: 420px;
+    box-shadow: 0 4px 16px rgba(232, 0, 107, 0.1);
+}
+
+.auth-card h1 {
+    font-size: 1.6rem;
+    color: #e8006b;
+    margin-bottom: 6px;
+}
+
+.auth-card .subtitle {
+    font-size: 0.88rem;
+    color: #c084a0;
+    margin-bottom: 24px;
+}
+
+.auth-card form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.auth-card label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: #b8004f;
+    margin-bottom: 4px;
+}
+
+.auth-card input {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid #f9b8d4;
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    color: #3a003a;
+    background: #fff8fb;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.auth-card input:focus {
+    border-color: #e8006b;
+}
+
+.password-hint {
+    font-size: 0.78rem;
+    color: #c084a0;
+    margin-top: 3px;
+}
+
+.auth-card button[type="submit"] {
+    background: #e8006b;
+    color: #fff;
+    border: none;
+    border-radius: 24px;
+    padding: 11px 0;
+    font-size: 1rem;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background 0.2s;
+    width: 100%;
+    margin-top: 4px;
+}
+
+.auth-card button[type="submit"]:hover {
+    background: #b8004f;
+}
+
+#error-msg {
+    color: #e8006b;
+    font-size: 0.88rem;
+    min-height: 1.2em;
+    text-align: center;
+}
+
+#success-msg {
+    color: #28a745;
+    font-size: 0.88rem;
+    min-height: 1.2em;
+    text-align: center;
+}
+
+.alt-action {
+    text-align: center;
+    margin-top: 18px;
+    font-size: 0.88rem;
+    color: #5a3a5a;
+}
+
+.alt-action a {
+    color: #e8006b;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.alt-action a:hover {
+    text-decoration: underline;
+}
+
+.divider {
+    border: none;
+    border-top: 1px solid #f9b8d4;
+    margin: 20px 0;
+}
+
+/* ── Override footer for auth pages ── */
+footer {
+    padding: 14px;
+}

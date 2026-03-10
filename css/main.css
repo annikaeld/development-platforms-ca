@@ -1,0 +1,200 @@
+/* ══════════════════════════════════════════
+   The Pink Press – Shared Styles
+   ══════════════════════════════════════════ */
+
+/* ── Reset ── */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* ── Base ── */
+body {
+    font-family: Georgia, 'Times New Roman', serif;
+    background: #fff0f5;
+    color: #3a003a;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ── Header ── */
+header {
+    background: #fff;
+    border-bottom: 3px solid #e8006b;
+    padding: 12px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(232, 0, 107, 0.12);
+}
+
+.logo-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.logo-img {
+    height: 100px;
+    object-fit: contain;
+}
+
+#user-greeting {
+    font-size: 0.85rem;
+    color: #c0006a;
+    font-style: italic;
+}
+
+#auth-btn {
+    background: #e8006b;
+    color: #fff;
+    border: 2px solid #e8006b;
+    border-radius: 24px;
+    padding: 6px 20px;
+    font-size: 0.95rem;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+    white-space: nowrap;
+}
+
+#auth-btn:hover {
+    background: #b8004f;
+    border-color: #b8004f;
+}
+
+.write-btn {
+    background: transparent;
+    color: #e8006b;
+    border: 2px solid #e8006b;
+    border-radius: 24px;
+    padding: 6px 20px;
+    font-size: 0.95rem;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    white-space: nowrap;
+}
+
+.write-btn:hover {
+    background: #e8006b;
+    color: #fff;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+}
+
+/* ── Hero tagline ── */
+.tagline-bar {
+    background: #e8006b;
+    color: #fff;
+    text-align: center;
+    padding: 6px 16px;
+    font-size: 0.85rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+/* ── Main layout ── */
+main {
+    flex: 1;
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 32px 16px 64px;
+}
+
+/* ── Section headings ── */
+.section-title {
+    font-size: 1.4rem;
+    color: #e8006b;
+    border-bottom: 2px solid #f9b8d4;
+    padding-bottom: 8px;
+    margin-bottom: 24px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+/* ── Footer ── */
+footer {
+    text-align: center;
+    padding: 18px;
+    font-size: 0.8rem;
+    color: #c084a0;
+    border-top: 1px solid #f9b8d4;
+    background: #fff;
+}
+
+/* ── Utilities ── */
+.loading,
+.no-articles,
+.error-text {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 40px 0;
+    color: #c084a0;
+    font-style: italic;
+    font-size: 1rem;
+}
+
+.error-text {
+    color: #e8006b;
+}
+
+/* ══════════════════════════════════════════
+   Mobile Responsive
+   ══════════════════════════════════════════ */
+@media (max-width: 600px) {
+    header {
+        padding: 10px 12px;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .logo-img {
+        height: 60px;
+    }
+
+    .header-right {
+        gap: 8px;
+    }
+
+    #user-greeting {
+        display: none;
+    }
+
+    #auth-btn {
+        padding: 6px 14px;
+        font-size: 0.85rem;
+    }
+
+    .write-btn {
+        padding: 5px 12px;
+        font-size: 0.85rem;
+    }
+
+    .tagline-bar {
+        font-size: 0.75rem;
+        padding: 5px 10px;
+    }
+
+    main {
+        padding: 20px 12px 48px;
+    }
+
+    .section-title {
+        font-size: 1.15rem;
+    }
+}

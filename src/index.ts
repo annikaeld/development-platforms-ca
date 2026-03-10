@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors";
 import authRoutes from "./routes/authRoutes.js";
 import articleRoutes from "./routes/articleRoutes.js";
 import swaggerUi from "swagger-ui-express";
@@ -6,6 +7,9 @@ import swaggerJsdoc from "swagger-jsdoc";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+// Enable CORS for all origins (dev) or restrict in production
+app.use(cors());
 
 // Swagger configuration
 const swaggerOptions = {

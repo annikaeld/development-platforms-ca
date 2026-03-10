@@ -5,264 +5,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>The Pink Press – Barbieland's Daily News</title>
-  <style>
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: Georgia, 'Times New Roman', serif;
-      background: #fff0f5;
-      color: #3a003a;
-      min-height: 100vh;
-    }
-
-    /* ── Header ── */
-    header {
-      background: #fff;
-      border-bottom: 3px solid #e8006b;
-      padding: 12px 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      box-shadow: 0 2px 8px rgba(232, 0, 107, 0.12);
-    }
-
-    .logo-link {
-      display: flex;
-      align-items: center;
-      text-decoration: none;
-    }
-
-    .logo-img {
-      height: 70px;
-      object-fit: contain;
-    }
-
-    #user-greeting {
-      font-size: 0.85rem;
-      color: #c0006a;
-      font-style: italic;
-    }
-
-    #auth-btn {
-      background: #e8006b;
-      color: #fff;
-      border: none;
-      border-radius: 24px;
-      padding: 8px 22px;
-      font-size: 0.95rem;
-      font-family: inherit;
-      cursor: pointer;
-      transition: background 0.2s;
-      white-space: nowrap;
-    }
-
-    #auth-btn:hover {
-      background: #b8004f;
-    }
-
-    .header-right {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      flex-shrink: 0;
-    }
-
-    /* ── Hero tagline ── */
-    .tagline-bar {
-      background: #e8006b;
-      color: #fff;
-      text-align: center;
-      padding: 6px 16px;
-      font-size: 0.85rem;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-    }
-
-    /* ── Main layout ── */
-    main {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 32px 16px 64px;
-    }
-
-    /* ── Section headings ── */
-    .section-title {
-      font-size: 1.4rem;
-      color: #e8006b;
-      border-bottom: 2px solid #f9b8d4;
-      padding-bottom: 8px;
-      margin-bottom: 24px;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-    }
-
-    /* ── Articles ── */
-    #articles-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 24px;
-      margin-bottom: 56px;
-    }
-
-    .article-card {
-      background: #fff;
-      border: 1px solid #f9b8d4;
-      border-top: 4px solid #e8006b;
-      border-radius: 8px;
-      padding: 20px;
-      box-shadow: 0 2px 8px rgba(232, 0, 107, 0.07);
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .article-category {
-      display: inline-block;
-      background: #fce4ef;
-      color: #b8004f;
-      font-size: 0.72rem;
-      font-weight: bold;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      padding: 3px 10px;
-      border-radius: 12px;
-      align-self: flex-start;
-    }
-
-    .article-title {
-      font-size: 1.1rem;
-      color: #3a003a;
-      line-height: 1.35;
-    }
-
-    .article-body {
-      font-size: 0.92rem;
-      color: #5a3a5a;
-      line-height: 1.6;
-      flex: 1;
-    }
-
-    .article-meta {
-      font-size: 0.75rem;
-      color: #c084a0;
-      font-style: italic;
-      margin-top: auto;
-    }
-
-    .loading,
-    .no-articles,
-    .error-text {
-      grid-column: 1 / -1;
-      text-align: center;
-      padding: 40px 0;
-      color: #c084a0;
-      font-style: italic;
-      font-size: 1rem;
-    }
-
-    .error-text {
-      color: #e8006b;
-    }
-
-    /* ── Create article section ── */
-    #create-section {
-      background: #fff;
-      border: 1px solid #f9b8d4;
-      border-top: 4px solid #e8006b;
-      border-radius: 8px;
-      padding: 28px 28px 24px;
-      box-shadow: 0 2px 8px rgba(232, 0, 107, 0.07);
-    }
-
-    #create-form {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-
-    #create-form label {
-      font-size: 0.85rem;
-      font-weight: bold;
-      color: #b8004f;
-      margin-bottom: 2px;
-      display: block;
-    }
-
-    #create-form input,
-    #create-form textarea,
-    #create-form select {
-      width: 100%;
-      padding: 10px 14px;
-      border: 1px solid #f9b8d4;
-      border-radius: 6px;
-      font-family: inherit;
-      font-size: 0.95rem;
-      color: #3a003a;
-      background: #fff8fb;
-      outline: none;
-      transition: border-color 0.2s;
-    }
-
-    #create-form input:focus,
-    #create-form textarea:focus,
-    #create-form select:focus {
-      border-color: #e8006b;
-    }
-
-    #create-form textarea {
-      resize: vertical;
-      min-height: 110px;
-    }
-
-    #create-form button[type="submit"] {
-      align-self: flex-start;
-      background: #e8006b;
-      color: #fff;
-      border: none;
-      border-radius: 24px;
-      padding: 10px 28px;
-      font-size: 1rem;
-      font-family: inherit;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-
-    #create-form button[type="submit"]:hover {
-      background: #b8004f;
-    }
-
-    #create-error {
-      color: #e8006b;
-      font-size: 0.88rem;
-      min-height: 1.2em;
-    }
-
-    #create-success {
-      color: #28a745;
-      font-size: 0.88rem;
-      min-height: 1.2em;
-    }
-
-    /* ── Footer ── */
-    footer {
-      text-align: center;
-      padding: 18px;
-      font-size: 0.8rem;
-      color: #c084a0;
-      border-top: 1px solid #f9b8d4;
-      background: #fff;
-    }
-  </style>
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/index.css" />
 </head>
 
 <body>
@@ -273,6 +17,7 @@
     </a>
     <div class="header-right">
       <span id="user-greeting"></span>
+      <button id="write-btn" class="write-btn" hidden>✦ Write</button>
       <button id="auth-btn">Log In</button>
     </div>
   </header>
@@ -280,11 +25,27 @@
   <div class="tagline-bar">✦ Barbieland's Daily News ✦</div>
 
   <main>
-    <h2 class="section-title">Latest Articles</h2>
+    <div class="articles-header">
+      <h2 class="section-title">Latest Articles</h2>
+      <div class="sort-controls">
+        <label for="sort-select">Sort by:</label>
+        <select id="sort-select">
+          <option value="date-desc">Newest first</option>
+          <option value="date-asc">Oldest first</option>
+          <option value="category-asc">Category (A–Z)</option>
+          <option value="category-desc">Category (Z–A)</option>
+        </select>
+      </div>
+    </div>
     <div id="articles-container"></div>
+  </main>
 
-    <section id="create-section" hidden>
-      <h2 class="section-title">Publish a New Article</h2>
+  <!-- Create Article Modal -->
+  <div id="create-modal" class="modal" hidden>
+    <div class="modal-backdrop"></div>
+    <div class="modal-content">
+      <button class="modal-close" aria-label="Close">&times;</button>
+      <h2 class="modal-title">Publish a New Article</h2>
       <form id="create-form" novalidate>
         <div>
           <label for="post-title">Title</label>
@@ -302,15 +63,32 @@
         <p id="create-success" aria-live="polite"></p>
         <button type="submit">✦ Publish</button>
       </form>
-    </section>
-  </main>
+    </div>
+  </div>
+
+  <!-- Article Modal -->
+  <div id="article-modal" class="modal" hidden>
+    <div class="modal-backdrop"></div>
+    <div class="modal-content">
+      <button class="modal-close" aria-label="Close">&times;</button>
+      <span id="modal-category" class="article-category"></span>
+      <h2 id="modal-title" class="modal-title"></h2>
+      <p id="modal-body" class="modal-body"></p>
+      <p id="modal-meta" class="article-meta"></p>
+      <button id="modal-delete-btn" class="delete-btn" hidden>Delete Article</button>
+    </div>
+  </div>
 
   <footer>
     &copy; The Pink Press &mdash; Barbieland's Daily News
   </footer>
 
   <script>
-    window.API_BASE_URL = window.location.origin;
+    (function () {
+      var isLocal = window.location.protocol === 'file:' ||
+        ['localhost', '127.0.0.1'].includes(window.location.hostname);
+      window.API_BASE_URL = isLocal ? 'http://localhost:3000' : window.location.origin;
+    })();
   </script>
   <script src="js/auth.js"></script>
   <script src="js/posts.js"></script>

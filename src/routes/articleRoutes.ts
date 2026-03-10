@@ -207,4 +207,67 @@ router.post("/", authenticateToken, validateArticle, async (req, res) => {
   }
 });
 
+/**
+ * @swagger
+ * /articles/{id}:
+ *   delete:
+ *     summary: Delete an article (author only)
+ *     tags:
+ *       - Articles
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *         description: Article ID
+ *     responses:
+ *       200:
+ *         description: Article deleted successfully
+ *       401:
+ *         description: Access token required
+ *       403:
+ *         description: You can only delete your own articles
+ *       404:
+ *         description: Article not found
+ *       500:
+ *         description: Failed to delete article
+ */
+
+// DELETE /articles/:id (protected, author only)
+router.delete("/:id", authenticateToken, async (req, res) => {
+  try {
+    const articleId = parseInt(req.params.id as string, 10);
+    const userId = (req as any).user.userId;
+
+    // Check if article exists and get the author
+    const [rows] = await pool.execute(
+      "SELECT submitted_by FROM articles WHERE id = ?",
+      [articleId],
+    );
+    const articles = rows as Article[];
+
+    if (articles.length === 0) {
+      return res.status(404).json({ error: "Article not found" });
+    }
+
+    // Check if the current user is the author
+    if (articles[0].submitted_by !== userId) {
+      return res
+        .status(403)
+        .json({ error: "You can only delete your own articles" });
+    }
+
+    // Delete the article
+    await pool.execute("DELETE FROM articles WHERE id = ?", [articleId]);
+
+    res.json({ message: "Article deleted successfully" });
+  } catch (error) {
+    console.error("Database error:", error);
+    res.status(500).json({ error: "Failed to delete article" });
+  }
+});
+
 export default router;
