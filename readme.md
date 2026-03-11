@@ -102,23 +102,66 @@ CREATE TABLE articles (
 
 # Setup
 
-1. Copy `.env.example` to `.env` and fill in your values:
+## Prerequisites
+
+- [Node.js](https://nodejs.org/) (v18 or higher recommended)
+- [MySQL](https://www.mysql.com/) (v8.0 or higher)
+- A MySQL client like [MySQL Workbench](https://www.mysql.com/products/workbench/)
+
+## 1. Clone the Repository
 
 ```bash
-Copy-Item .env.example .env
+git clone https://github.com/annikaeld/development-platforms-ca.git
+cd development-platforms-ca
 ```
 
-2. Install dependencies:
+## 2. Set Up the Database
+
+1. Open MySQL Workbench (or your preferred MySQL client)
+2. Create a new database:
+   ```sql
+   CREATE DATABASE pink_press;
+   ```
+3. Import the database dump:
+   - Go to **Server → Data Import**
+   - Select the `database/dump.sql` file from this repository
+   - Click **Start Import**
+
+## 3. Configure Environment Variables
+
+1. Copy the example environment file:
+   ```bash
+   Copy-Item .env.example .env
+   ```
+2. Open `.env` and fill in your MySQL credentials:
+   ```
+   DB_HOST=localhost
+   DB_USER=your_mysql_username
+   DB_PASSWORD=your_mysql_password
+   DB_NAME=pink_press
+   JWT_SECRET=your_secret_key
+   PORT=3000
+   ```
+
+## 4. Install Dependencies
 
 ```bash
 npm install
 ```
 
-3. Run the application:
+## 5. Run the Backend Server
 
 ```bash
 npm run dev
 ```
+
+The API will be available at `http://localhost:3000`
+
+## 6. Run the Frontend
+
+Open `index.html` in a browser. For best results, use a local server like [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) in VS Code.
+
+The frontend will automatically connect to the backend at `http://localhost:3000`.
 
 ## Scripts
 
