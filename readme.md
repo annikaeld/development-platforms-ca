@@ -153,7 +153,7 @@ What I think is the main benefit of a custom API is that you are in total contro
 
 ## AI Assistance Disclosure
 
-This project used **GitHub Copilot (GPT-5.3-Codex)** as a tutoring assistant for:
+This project used **GitHub Copilot (GPT-5.3-Codex)** only in ASK mode as a tutoring assistant for:
 
 - concept explanations (Express middleware, JWT, validation),
 - debugging guidance,
