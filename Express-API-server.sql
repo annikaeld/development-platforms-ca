@@ -29,7 +29,7 @@ CREATE TABLE `articles` (
   `title` varchar(255) NOT NULL,
   `body` text NOT NULL,
   `category` varchar(100) DEFAULT NULL,
-  `submitted_by` int DEFAULT NULL,
+  `submitted_by` int NOT NULL,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `submitted_by` (`submitted_by`),
