@@ -4,6 +4,12 @@
 
 Build a news platform where users can browse and submit news articles. Built as a REST API with Express with no frontend required.
 
+## Experimental Branch Notice
+
+This branch is an experimental version where AI agents were used to generate all frontend code.
+
+The backend implementation is still created by me and follows the same backend foundation as the main branch.
+
 ## Public Access:
 
 - Anyone can view the list of news articles
@@ -198,7 +204,9 @@ What I think is the main benefit of a custom API is that you are in total contro
 
 ## AI Assistance Disclosure
 
-This project used **GitHub Copilot (GPT-5.3-Codex)** only in ASK mode as a tutoring assistant for:
+In this experimental branch, AI agents were used to generate the frontend.
+
+The backend remains my own implementation (as in main), while **GitHub Copilot (GPT-5.3-Codex)** was also used in ASK mode as a tutoring assistant for:
 
 - concept explanations (Express middleware, JWT, validation),
 - debugging guidance,
