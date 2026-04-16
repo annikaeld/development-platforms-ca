@@ -1,6 +1,5 @@
 <img width="898" height="591" alt="image" src="https://github.com/user-attachments/assets/3e93be87-92d7-4f51-a6fb-cd030f6d1d84" />
 
-
 # Description
 
 Build a news platform where users can browse and submit news articles. Built as a REST API with Express with no frontend required.
@@ -196,3 +195,15 @@ The part I enjoyed the least was spending long periods searching for small mista
 Supabase would be ready to use instantly and would not require as much coding to set up. It is also cloud-based and accessible to everyone, meaning the infrastructure is managed by the platform. However, this would also mean being limited to the features provided by Supabase, whereas with Express I have full control and can implement any logic required.
 
 What I think is the main benefit of a custom API is that you are in total control of what is implemented, and I find it fun to manage a database. However, if this were my job, my main concern would probably be security and the risk of putting everything on one server. In terms of maintenance, Supabase would require very little maintenance, while an Express server requires you to update and manage security yourself. Developing a custom API also provides a deeper understanding of how backend systems work, including authentication, database queries, and server logic.
+
+## AI Assistance Disclosure
+
+This project used **GitHub Copilot (GPT-5.3-Codex)** only in ASK mode as a tutoring assistant for:
+
+- concept explanations (Express middleware, JWT, validation),
+- debugging guidance,
+- documentation support.
+
+I reviewed, understood, and edited all implementation decisions and final code.
+
+Detailed AI usage and citation log: **`AI-usage.md`**.
